@@ -43,7 +43,7 @@ class ImdbSpider(scrapy.Spider):
         actor_name = response.css("span.itemprop::text").get()
 
         #selects the work from the actor page
-        movie_or_TV_name = response.css("div.filmo-category-section:not([style*='display:none;']) b")
+        movie_or_TV_name = response.css("div.filmo-row b")
         for movie in movie_or_TV_name:
             yield {"actor" : actor_name, "movie_or_TV_name" : movie.css("a::text").get()}
 
